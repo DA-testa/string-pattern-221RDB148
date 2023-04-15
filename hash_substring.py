@@ -41,7 +41,7 @@ def read_input():
         pattern = input()
         text = input()
     if inp.upper == "F":
-        file = open(inp.split(" ",1))
+        file = open(inp.split(" ",1)[1])
         str = file.readlines()
         pattern = str(str[0])
         text = str(str[1])
