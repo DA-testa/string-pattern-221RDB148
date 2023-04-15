@@ -13,7 +13,7 @@ def next_prime(n):
             if n% i == 0 or n% (i+2) == 0:
                 return False
             i+=6
-        return False
+        return True
     i= n + 1
     while not is_prime(i):
         i+=1
@@ -33,23 +33,62 @@ def read_input():
     
     # this is the sample return, notice the rstrip function
     # return (input().rstrip(), input().rstrip())
-    return ("as","sdasaP")
+    textos = "ZtonpqnFzlpvUKZrBbRlNoYhXmlwOscxnkTWjsyNJNhgvzMFbxFnbiWuBAGjZQlCRQHjTUXxtHmTxoLuMbRYsvSpxhtrlvABBlFYmndFzHypOmJyFxjHEPlNoYhXmlwOscxnkTWjsyNJNhgvzMFbxFnbiWuBAGjZQlCRQHjTUXbDiEAvtPlNoYhXmlwOscxnkTWjsyNJNhgvzMFbxFnbiWuBAGjZQlCRQHjTUXRRNoBCUMQVOlNoYhXmlwOscxnkTWjsyNJNhgvzMFbxFnbiWuBAGjZQlCRQHjTUXRLKlNoYhXmlwOscxnkTWjsyNJNhgvzMFbxFnbiWuBAGjZQlCRQHjTUXAYPDKWtVpShhclNoYhXmlwOscxnkTWjsyNJNhgvzMFbxFnbiWuBAGjZQlCRQHjTUXOJlUlNoYhXmlwOscxnkTWjsyNJNhgvzMFbxFnbiWuBAGjZQlCRQHjTUXglmlNoYhXmlwOscxnkTWjsyNJNhgvzMFbxFnbiWuBAGjZQlCRQHjTUXuaOibGlVrwghvNTgLfltIbEdBlgjelFjQkBeFrdEV"
+    patternos = "lNoYhXmlwOscxnkTWjsyNJNhgvzMFbxFnbiWuBAGjZQlCRQHjTUX"
+    return (patternos,textos)
 
-def get_hash(str):
-    B = 256
+Q = 0
+# def get_hash(str:str):
+#     m = len(str)
+#     result = 0
+#     for i in range(m):
+#         result = (B + result + )
+    
 
 def print_occurrences(output):
     # this function should control output, it doesn't need any return
     print(' '.join(map(str, output)))
 
 def get_occurrences(pattern, text):
-    # this function should find the occurances using Rabin Karp alghoritm 
+    results = []
+    B = 256
+    Q = next_prime(len(pattern))
+    
+    tl = len(text)
+    pl = len(pattern)
 
-    # and return an iterable variable
-    ##sitie ir numbers, kur atkartojas fraze 
-    print(next_prime(1000))
-    print("asd")
-    return [0, "asd", 2.8]
+    h = 1
+    for i in range(1,pl):
+        h = (h * B) % Q
+
+    #initial hash values:
+    p_hash = 0
+    t_hash = 0
+    for i in range(0,pl):
+        p_hash = (B * p_hash + ord(pattern[i])) % Q
+        t_hash = (B * t_hash + ord(text[i])) % Q
+
+    #remaining charecters
+    for i in range(0,tl-(pl-1)):
+        # print(text[i:i+pl],end=" ")
+        # print(t_hash, p_hash)
+        if p_hash == t_hash:
+            if pattern == text[i:i+pl]:
+                # print("URAAAAAA=",i)
+                results.append(i)
+        #do i need this?
+        if i < tl-pl:
+            t_hash = (B * (t_hash-ord(text[i])*h) + ord(text[i+pl]))%Q
+
+            if t_hash < 0:
+                print("t is negative")
+                t = t + Q 
+    # print("pattern not found")
+    return results
+                
+
+
+    # return [0, "asd", 2.8]
 
 
 # this part launches the functions
