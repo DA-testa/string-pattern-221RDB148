@@ -37,10 +37,12 @@ def read_input():
     text = ""
     
     inp = input()
-    if inp.upper == "I":
+    if inp[0] == "I":
+        # print("asd")
         pattern = input()
         text = input()
-    if inp.upper == "F":
+
+    if inp[0] == "F":
         file = open(inp.split(" ",1)[1])
         str = file.readlines()
         pattern = str(str[0])
