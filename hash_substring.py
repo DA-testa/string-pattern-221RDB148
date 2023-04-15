@@ -23,7 +23,8 @@ def get_occurrences(pattern, text):
     # this function should find the occurances using Rabin Karp alghoritm 
 
     # and return an iterable variable
-    return [0]
+    ##sitie ir numbers, kur atkartojas fraze 
+    return [0, "asd", 2.8]
 
 
 # this part launches the functions
