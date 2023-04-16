@@ -43,13 +43,18 @@ def read_input():
         text = input()
 
     if inp[0] == "F":
-        file = open(inp.split(" ",1)[1])
-        str = file.readlines()
-        pattern = str(str[0])
-        text = str(str[1])
-    # print("text=",text)
-    # textos = "ZtonpqnFzlpvUKZrBbRlNoYhXmlwOscxnkTWjsyNJNhgvzMFbxFnbiWuBAGjZQlCRQHjTUXxtHmTxoLuMbRYsvSpxhtrlvABBlFYmndFzHypOmJyFxjHEPlNoYhXmlwOscxnkTWjsyNJNhgvzMFbxFnbiWuBAGjZQlCRQHjTUXbDiEAvtPlNoYhXmlwOscxnkTWjsyNJNhgvzMFbxFnbiWuBAGjZQlCRQHjTUXRRNoBCUMQVOlNoYhXmlwOscxnkTWjsyNJNhgvzMFbxFnbiWuBAGjZQlCRQHjTUXRLKlNoYhXmlwOscxnkTWjsyNJNhgvzMFbxFnbiWuBAGjZQlCRQHjTUXAYPDKWtVpShhclNoYhXmlwOscxnkTWjsyNJNhgvzMFbxFnbiWuBAGjZQlCRQHjTUXOJlUlNoYhXmlwOscxnkTWjsyNJNhgvzMFbxFnbiWuBAGjZQlCRQHjTUXglmlNoYhXmlwOscxnkTWjsyNJNhgvzMFbxFnbiWuBAGjZQlCRQHjTUXuaOibGlVrwghvNTgLfltIbEdBlgjelFjQkBeFrdEV"
-    # patternos = "lNoYhXmlwOscxnkTWjsyNJNhgvzMFbxFnbiWuBAGjZQlCRQHjTUX"
+        # print("asd")
+        file = open("tests/06")
+        lines = file.readlines()
+        # print(lines)
+        
+        pattern = str(lines[0])
+        text = str(lines[1])
+
+        # for i in range(6):
+        #     with open(f"test/{i}") as f:
+        #         print(f.read())
+
     return (pattern.rstrip(),text.rstrip())
 
 Q = 0
